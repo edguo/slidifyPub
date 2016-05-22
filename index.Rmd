@@ -1,0 +1,50 @@
+---
+title       : Coursera Developing Data Products Slidify Project
+subtitle    : ToothGrowth data analysis (from Statistical Inference project)
+author      : Edward Guo
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Analyze the ToothGrowth data in the R datasets package.
+```{r}
+# load the dataset
+library(datasets)
+library(ggplot2)
+
+data(ToothGrowth)
+str(ToothGrowth)
+```
+
+---
+
+## Summary of the data
+```{r}
+ToothGrowth$dose <- as.factor(ToothGrowth$dose)
+summary(ToothGrowth)
+
+```
+
+---
+
+## Clear positive corr between tooth & dose 
+```{r}
+g1 <- ggplot(ToothGrowth, aes(x=factor(dose),y=len,fill=factor(dose)))
+```
+```{r echo=FALSE}
+g1 + geom_boxplot(notch=F) + facet_grid(.~supp) + scale_x_discrete("Dosage in miligrams") + scale_y_continuous("Tooth Length")
+```
+
+---
+
+##  Confidence intervals and/or hypothesis tests 
+```{r}
+fit <- lm(len ~ dose + supp, data=ToothGrowth)
+confint(fit)
+```
+

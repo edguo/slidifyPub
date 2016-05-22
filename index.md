@@ -55,7 +55,7 @@ summary(ToothGrowth)
 ```r
 g1 <- ggplot(ToothGrowth, aes(x=factor(dose),y=len,fill=factor(dose)))
 ```
-![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4-1.png)
+![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png)
 
 ---
 
